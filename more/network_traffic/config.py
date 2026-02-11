@@ -1,1 +1,2 @@
 EXTERNAL_IP = ["192.168", "10"]
+SENSITIVE_PORT = ["22","23","3389"]
