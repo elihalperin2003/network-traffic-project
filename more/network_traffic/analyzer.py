@@ -1,4 +1,4 @@
-from checks import check_ip_external_addresses, check_port_sensitive
+from checks import check_ip_external_addresses, check_port_sensitive, check_large_packet
 
 
 def analyze_ip_external_addresses(file):
@@ -6,4 +6,7 @@ def analyze_ip_external_addresses(file):
 
 
 def analyze_port_sensitive(file):
-    return [line[3] for line in file if check_port_sensitive(line)]
+    return [line for line in file if check_port_sensitive(line)]
+
+def analyze_large_packet(file):
+    return [line for line in file if check_large_packet(line)]
