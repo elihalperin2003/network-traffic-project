@@ -10,3 +10,6 @@ def analyze_port_sensitive(file):
 
 def analyze_large_packet(file):
     return [line for line in file if check_large_packet(line)]
+
+def labeling_size_packet(file):
+    return [line.append("LARGE") if check_large_packet(line) else line.append("NORMAL") for line in file]
