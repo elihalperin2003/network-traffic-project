@@ -15,3 +15,19 @@ def analyze_night_activity(file):
 
 def labeling_size_packet(file):
     return [line.append("LARGE") if check_large_packet(line) else line.append("NORMAL") for line in file]
+
+def len_ip_addresses(file):
+    ip_addresses = [line[1] for line in file]
+    return {ip: ip_addresses.count(ip) for ip in set(ip_addresses)}
+
+# d = [["2024-01-15 00:00:29", "10.0.0.8", "10.0.0.7", "80", "HTTP", "762"],
+#      ["2024-01-15 00:00:29", "10.0.0.8", "10.0.0.7", "80", "HTTP", "762"],
+#      ["2024-01-15 00:00:29", "18.0.0.8", "10.0.0.7", "80", "HTTP", "762"],
+#      ["2024-01-15 00:00:29", "18.0.0.8", "10.0.0.7", "80", "HTTP", "762"],
+#      ["2024-01-15 00:00:29", "10.0.0.8", "10.0.0.7", "80", "HTTP", "762"],
+#      ["2024-01-15 00:00:29", "10.0.0.8", "10.0.0.7", "80", "HTTP", "762"],
+#      ["2024-01-15 00:00:29", "10.5.0.8", "10.0.0.7", "80", "HTTP", "762"],
+#      ["2024-01-15 00:00:29", "20.0.0.8", "10.0.0.7", "80", "HTTP", "762"],
+#
+#      ]
+# print(len_ip_addresses(d))
