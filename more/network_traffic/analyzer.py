@@ -62,6 +62,12 @@ def analyze_port_sensitive_lambda(file):
 def analyze_night_activity_lambda(file):
     return list(filter(lambda line: check_night_activity(line), file))
 
+
+suspicion_checks = {"EXTERNAL_IP": lambda line: check_ip_external_addresses(line),
+                    "SENSITIVE_PORT": lambda line: check_port_sensitive(line),
+                    "LARGE_PACKET": lambda line: check_large_packet(line),
+                    "NIGHT_ACTIVITY": lambda line: check_night_activity(line)}
+
 # d = [["2024-01-15 08:00:29", "10.1.0.8", "10.0.0.7", "54", "HTTP", "762"],
 #      ["2024-01-15 03:00:29", "10.1.0.8", "10.0.0.7", "80", "HTTP", "762"],
 #      ["2024-01-15 03:00:29", "10.2.0.8", "10.0.0.7", "80", "HTTP", "50000"],
