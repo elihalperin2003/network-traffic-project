@@ -40,6 +40,11 @@ def suspicious_detection_for_ips(file):
                 suspicion_report[line[1]].add(suspicion_name)
     return {ip: list(suspicions) for ip, suspicions in suspicion_report.items() if suspicions}
 
+
+def filtering_2_suspicions(file):
+    return {ip: suspicions for ip, suspicions in suspicious_detection_for_ips(file).items() if len(suspicions) >= 2}
+
+
 # d = [["2024-01-15 08:00:29", "10.1.0.8", "10.0.0.7", "54", "HTTP", "762"],
 #      ["2024-01-15 03:00:29", "10.1.0.8", "10.0.0.7", "80", "HTTP", "762"],
 #      ["2024-01-15 03:00:29", "10.2.0.8", "10.0.0.7", "80", "HTTP", "50000"],
@@ -48,5 +53,6 @@ def suspicious_detection_for_ips(file):
 #      ]
 #
 # dd = [["2024-01-15 04:00:29", "10.1.0.8", "10.0.0.7", "23", "HTTP", "762"],
-#       ["2024-01-15 08:00:29", "10.1.0.8", "10.0.0.7", "54", "HTTP", "76200"]]
-# print(analyze_network_data(d))
+#       ["2024-01-15 08:00:29", "10.2.0.8", "10.0.0.7", "54", "HTTP", "76200"]]
+# print(suspicious_detection_for_ips(dd))
+# print(filtering_2_suspicions(dd))
