@@ -49,6 +49,10 @@ def filtering_2_suspicions(file):
 def finding_hour(file):
     return list(map(lambda line:check_hour(line),file))
 
+
+def package_size_conversion(bytes_line):
+    return list(map(lambda bites: round(bites/1024,1), bytes_line))
+
 # d = [["2024-01-15 08:00:29", "10.1.0.8", "10.0.0.7", "54", "HTTP", "762"],
 #      ["2024-01-15 03:00:29", "10.1.0.8", "10.0.0.7", "80", "HTTP", "762"],
 #      ["2024-01-15 03:00:29", "10.2.0.8", "10.0.0.7", "80", "HTTP", "50000"],
