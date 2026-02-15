@@ -46,4 +46,4 @@ def check_suspicious_detection(line):
 
 # c = ["2024-01-15 04:01:00","192.168.1.100","10.0.0.5","443","HTTPS","10204"]
 # print(check_suspicious_detection(c))
-#כינגזירגי
+#dgerg
