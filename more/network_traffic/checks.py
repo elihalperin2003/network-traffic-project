@@ -26,5 +26,9 @@ def check_night_activity(line):
         return True
     return False
 
+def check_hour(line):
+    hour_line = datetime.strptime(line[0], "%Y-%m-%d %H:%M:%S")
+    return hour_line.hour
+
 # c = ["2024-01-15 04:01:00","192.168.1.100","10.0.0.5","443","HTTPS","1024"]
 # print(check_night_activity(c))
