@@ -1,4 +1,5 @@
-from checks import check_ip_external_addresses, check_port_sensitive, check_large_packet, check_night_activity, check_hour
+from checks import check_ip_external_addresses, check_port_sensitive, check_large_packet, check_night_activity, \
+    check_hour
 from collections import defaultdict
 
 
@@ -47,11 +48,15 @@ def filtering_2_suspicions(file):
 
 
 def finding_hour(file):
-    return list(map(lambda line:check_hour(line),file))
+    return list(map(lambda line: check_hour(line), file))
 
 
 def package_size_conversion(bytes_line):
-    return list(map(lambda bites: round(bites/1024,1), bytes_line))
+    return list(map(lambda bites: round(bites / 1024, 1), bytes_line))
+
+
+def analyze_port_sensitive_lambda(file):
+    return list(filter(lambda line: check_port_sensitive(line), file))
 
 # d = [["2024-01-15 08:00:29", "10.1.0.8", "10.0.0.7", "54", "HTTP", "762"],
 #      ["2024-01-15 03:00:29", "10.1.0.8", "10.0.0.7", "80", "HTTP", "762"],
@@ -61,5 +66,5 @@ def package_size_conversion(bytes_line):
 #      ]
 #
 # dd = [["2024-01-15 04:00:29", "10.1.0.8", "10.0.0.7", "23", "HTTP", "762"],
-#       ["2024-01-15 08:00:29", "10.2.0.8", "10.0.0.7", "54", "HTTP", "76200"]]
-# print(finding_hour(d))
+#       ["2024-01-15 08:00:29", "10.2.0.8", "10.0.0.7", "338", "HTTP", "76200"]]
+# print(analyze_port_sensitive_lambda(dd))
