@@ -58,6 +58,10 @@ def package_size_conversion(bytes_line):
 def analyze_port_sensitive_lambda(file):
     return list(filter(lambda line: check_port_sensitive(line), file))
 
+
+def analyze_night_activity_lambda(file):
+    return list(filter(lambda line: check_night_activity(line), file))
+
 # d = [["2024-01-15 08:00:29", "10.1.0.8", "10.0.0.7", "54", "HTTP", "762"],
 #      ["2024-01-15 03:00:29", "10.1.0.8", "10.0.0.7", "80", "HTTP", "762"],
 #      ["2024-01-15 03:00:29", "10.2.0.8", "10.0.0.7", "80", "HTTP", "50000"],
@@ -65,6 +69,6 @@ def analyze_port_sensitive_lambda(file):
 #      ["2024-01-15 03:00:29", "10.4.0.8", "10.0.0.7", "80", "HTTP", "10000"]
 #      ]
 #
-# dd = [["2024-01-15 04:00:29", "10.1.0.8", "10.0.0.7", "23", "HTTP", "762"],
-#       ["2024-01-15 08:00:29", "10.2.0.8", "10.0.0.7", "338", "HTTP", "76200"]]
-# print(analyze_port_sensitive_lambda(dd))
+# dd = [["2024-01-15 09:00:29", "10.1.0.8", "10.0.0.7", "23", "HTTP", "762"],
+#       ["2024-01-15 08:02:29", "10.2.0.8", "10.0.0.7", "338", "HTTP", "76200"]]
+# print(analyze_night_activity_lambda(dd))
